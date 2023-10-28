@@ -1,24 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import FormUsuario from "./components/FormUsuario";
 import TableUser from "./components/TableUsers";
+import { useUsersContext } from "./context/userContext";
 
-const URL = "http://localhost:3000/usuarios";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(URL)
-      .then((res) => {
-        setUsers(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const {users, setUsers} = useUsersContext();
 
   return (
     <div className="container mt-4">
